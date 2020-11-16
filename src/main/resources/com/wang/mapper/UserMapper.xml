@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wang.mapper.UserMapper">
+
+<!--  增加用户 -->
+    <insert id="addUser" parameterType="User">
+        insert into ms.user (mobile, password, sex, birthdate, address, email, state, create_time, update_time)
+        values (#{mobile},#{password},#{sex},#{birthdate},#{address},#{email},#{state},#{create_time},#{update_time})
+    </insert>
+
+<!-- 删除用户 -->
+    <delete id="deleteUser" parameterType="_int">
+        delete from ms.user where id = #{id}
+    </delete>
+
+<!--  修改用户  -->
+    <update id="updateUser" parameterType="_int">
+        update ms.user set mobile = #{mobile},password=#{password},sex=#{sex}, birthdate=#{birthdate},
+        address=#{address}, email=#{email}, state=#{state}, create_time=#{create_time}, update_time=#{update_time}
+    </update>
+    
+<!--  查询用户  -->
+    <select id="queryUser" resultType="User" parameterType="_int">
+        select * from ms.user where id = #{id}
+    </select>
+
+<!--  查询用户id  -->
+    <select id="queryUserById" parameterType="_int">
+        select id from ms.user where id =#{id}
+    </select>
+</mapper>
